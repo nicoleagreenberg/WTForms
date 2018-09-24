@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template, redirect, url_for, flash
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, SubmitField
+from wtforms import StringField, IntegerField, SubmitField, Email
 from wtforms.validators import Required
 
 import requests
@@ -14,6 +14,9 @@ class NameForm(FlaskForm):
     name = StringField('What is your name?', validators=[Required()])
     age = IntegerField('What is your age?', validators=[Required()])
     submit = SubmitField('Submit')
+    results = StringField(validators=[Required()])
+    email = EmailField('What is your email?', validators=[Required()])
+
 
 @app.route('/')
 def home():
